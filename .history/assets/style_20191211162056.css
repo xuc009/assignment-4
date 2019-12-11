@@ -33,9 +33,12 @@
 }
 
 img{
-	height: 80vh;
-	transform: rotate(90deg);
-	}
+	height: 90vh;
+	position: relative;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
 
 #description{
 }
