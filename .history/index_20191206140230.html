@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, user-scalable=no">
+	<title>4</title>
+	<link rel="stylesheet" type="text/css" href="assets/style.css">
+
+</head>
+<body>
+	
+	<div id="stone"></div>
+
+	<script type="text/javascript" src="assets/storageAvailable.js"></script>
+	<script type="text/javascript" src="assets/script2.js"></script>
+	<script src="assets/timeme.min.js"></script>
+	<script language="javascript">
+		function cnt()
+		{
+			var count=parseInt(document.frm1.inp1.value);
+			count++;
+			document.frm1.inp1.value=count;
+			// alert(document.frm1.inp1.value);
+			console.log("amount of mouse overs:", count)
+
+		}
+		</script>
+
+<form name="frm1" method="post" action="">
+
+	<div id="root" ONMOUSEOVER="cnt()">
+	</div>
+
+</form>
+
+</body>
+</html>

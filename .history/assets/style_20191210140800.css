@@ -1,0 +1,39 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+#root{
+	background-color: magenta;
+	width: 100vw;
+	height: 100vh;
+	
+}
+
+.button{
+	height: 100px;
+	width: 200px;
+	text-align: center;
+	font-family: Arial;
+	line-height: 25px;
+	font-size: 25px;
+	user-select: none;
+	cursor: pointer;
+	background-color: red;
+	border-radius:25%;
+	display: inline;
+	color: white;
+}
+
+.button:hover{
+	background-color: pink;
+}
+
+#circle{
+	height: 400px;
+	width: 400px;
+	border-radius: 50%;
+	background-color: red;
+	z-index: ;
+}
+
