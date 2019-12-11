@@ -124,7 +124,7 @@ var stoneInteraction = function () {
 
 		if (count > 0 && count <= 200) {
 			//COLOR CHANGE
-			myDiv.addEventListener('mousemove', function () {
+			myDiv.addEventListener('mouseenter', function () {
 				var currentColor = myDiv.style.backgroundColor;
 				console.log(myDiv.style.backgroundColor);
 

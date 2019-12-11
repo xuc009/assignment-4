@@ -1,0 +1,42 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+#root{
+	background-color: magenta;
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 10;
+}
+
+.button{
+	height: 100px;
+	width: 200px;
+	text-align: center;
+	font-family: Arial;
+	line-height: 25px;
+	font-size: 25px;
+	user-select: none;
+	cursor: pointer;
+	background-color: red;
+	border-radius:25%;
+	display: inline;
+	color: white;
+}
+
+.button:hover{
+	background-color: pink;
+}
+
+
+
+#background{
+	height: 100vh;
+	width: 100vw;
+	z-index: -4;
+}

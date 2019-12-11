@@ -118,13 +118,9 @@ var stoneInteraction = function () {
 		localStorage.setItem('count', count);
 		console.log("count:", count);
 
-		var goingup = true;
-		var greenGoingup = true;
-		var blueGoingup = true;
-
 		if (count > 0 && count <= 200) {
 			//COLOR CHANGE
-			myDiv.addEventListener('mousemove', function () {
+			myDiv.addEventListener('mouseenter', function () {
 				var currentColor = myDiv.style.backgroundColor;
 				console.log(myDiv.style.backgroundColor);
 
@@ -146,7 +142,9 @@ var stoneInteraction = function () {
 				var newGreen = green - 2;
 				var newBlue = blue + 1;
 
-				
+				var goingup = true;
+				var greenGoingup = true;
+				var blueGoingup = true;
 
 				//RED
 				if (goingup === true) {

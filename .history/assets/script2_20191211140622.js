@@ -55,7 +55,9 @@ var checkForItems = function () {
 	}
 }
 
-
+var goingup = true;
+var greenGoingup = true;
+var blueGoingup = true;
 
 // var saveUserInfo = function(){
 
@@ -111,28 +113,24 @@ count = parseInt(count);
 var stoneInteraction = function () {
 
 	var myDiv = document.getElementById("root");
+	console.log(myDiv);
 
 	myDiv.addEventListener("mouseenter", function () {
 
 		count++;
+		count=0;
 		localStorage.setItem('count', count);
 		console.log("count:", count);
 
-		var goingup = true;
-		var greenGoingup = true;
-		var blueGoingup = true;
-
 		if (count > 0 && count <= 200) {
 			//COLOR CHANGE
-			myDiv.addEventListener('mousemove', function () {
-				var currentColor = myDiv.style.backgroundColor;
-				console.log(myDiv.style.backgroundColor);
-
+			document.getElementById("root").addEventListener('mousemove', function () {
+				var currentColor = document.getElementById("root").style.backgroundColor;
 				currentColor = currentColor.substring(4, currentColor.length - 1)
 					.replace(/ /g, '')
 					.split(',');
 
-				console.log("current color:", currentColor);
+				// console.log("current color:", currentColor);
 
 				var red = currentColor[0];
 				red = parseInt(red);
@@ -146,13 +144,10 @@ var stoneInteraction = function () {
 				var newGreen = green - 2;
 				var newBlue = blue + 1;
 
-				
-
 				//RED
 				if (goingup === true) {
 					newRed = red + 2;
-					console.log("going up", newRed)
-					console.log (goingup)
+					// console.log("going up", newRed)
 					if (red >= 255) {
 						goingup = false
 					}
@@ -197,7 +192,7 @@ var stoneInteraction = function () {
 
 
 				// update site:
-				myDiv.style.backgroundColor = newColor;
+				document.getElementById("root").style.backgroundColor = newColor;
 
 			})
 
