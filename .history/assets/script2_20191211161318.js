@@ -200,6 +200,7 @@ var stoneInteraction = function () {
 	myDiv.addEventListener("mouseenter", function () {
 
 		count++;
+		count=0;
 		localStorage.setItem('count', count);
 		console.log("count:", count);
 

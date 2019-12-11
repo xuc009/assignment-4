@@ -108,12 +108,6 @@ var count = 0;
 count = parseInt(count);
 
 var colorChange = function (){
-	
-	var myDiv = document.getElementById("root");
-	var goingup = true;
-	var greenGoingup = true;
-	var blueGoingup = true;
-
 	myDiv.addEventListener('mousemove', function () {
 		var currentColor = myDiv.style.backgroundColor;
 		console.log(myDiv.style.backgroundColor);
@@ -203,8 +197,90 @@ var stoneInteraction = function () {
 		localStorage.setItem('count', count);
 		console.log("count:", count);
 
+		var goingup = true;
+		var greenGoingup = true;
+		var blueGoingup = true;
+
 		if (count > 0 && count <= 200) {
+			//COLOR CHANGE
 			colorChange();
+			// myDiv.addEventListener('mousemove', function () {
+			// 	var currentColor = myDiv.style.backgroundColor;
+			// 	console.log(myDiv.style.backgroundColor);
+
+			// 	currentColor = currentColor.substring(4, currentColor.length - 1)
+			// 		.replace(/ /g, '')
+			// 		.split(',');
+
+			// 	console.log("current color:", currentColor);
+
+			// 	var red = currentColor[0];
+			// 	red = parseInt(red);
+			// 	var green = currentColor[1];
+			// 	green = parseInt(green);
+			// 	var blue = currentColor[2];
+			// 	blue = parseInt(blue);
+
+
+			// 	//var newRed = red + 1;
+			// 	var newGreen = green - 2;
+			// 	var newBlue = blue + 1;
+
+				
+
+			// 	//RED
+			// 	if (goingup === true) {
+			// 		newRed = red + 2;
+			// 		console.log("going up", newRed)
+			// 		console.log (goingup)
+			// 		if (red >= 255) {
+			// 			goingup = false
+			// 		}
+			// 	} else {
+			// 		newRed = red - 2;
+			// 		if (red <= 0) {
+			// 			goingup = true;
+			// 		}
+			// 	}
+			// 	//GREEN
+			// 	if (greenGoingup === true) {
+			// 		newGreen = green + 6;
+			// 		if (green >= 255) {
+			// 			greenGoingup = false
+			// 		}
+			// 	} else {
+			// 		newGreen = green - 6;
+			// 		if (green <= 0) {
+			// 			greenGoingup = true;
+			// 		}
+			// 	}
+			// 	//BLUE
+			// 	if (blueGoingup === true) {
+			// 		newGreen = blue + 9;
+			// 		// console.log("going up", newRed)
+			// 		if (blue >= 255) {
+			// 			blueGoingup = false
+			// 		}
+			// 	} else {
+			// 		newBlue = blue - 9;
+			// 		// console.log("going down", newRed)
+			// 		if (blue <= 0) {
+			// 			blueGoingup = true;
+			// 		}
+			// 	}
+
+			// 	var newColor = `rgb(${newRed}, ${newGreen}, ${newBlue})`
+
+
+			// 	// save or overwrite item: 
+			// 	localStorage.setItem('background', newColor);
+
+
+			// 	// update site:
+			// 	myDiv.style.backgroundColor = newColor;
+
+			})
+
 		}else if (count > 200 && count <= 400) {
 			//DECREASE TO SQUARE
 				myDiv.addEventListener("mouseover", function () {
