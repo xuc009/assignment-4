@@ -119,7 +119,7 @@ var colorChange = function (){
 
 	myDiv.addEventListener('mousemove', function () {
 		var currentColor = myDiv.style.backgroundColor;
-		// console.log(myDiv.style.backgroundColor);
+		console.log(myDiv.style.backgroundColor);
 
 		currentColor = currentColor.substring(4, currentColor.length - 1)
 			.replace(/ /g, '')
@@ -144,8 +144,8 @@ var colorChange = function (){
 		//RED
 		if (goingup === true) {
 			newRed = red + 2;
-			// console.log("going up", newRed)
-			// console.log (goingup)
+			console.log("going up", newRed)
+			console.log (goingup)
 			if (red >= 255) {
 				goingup = false
 			}
@@ -170,11 +170,13 @@ var colorChange = function (){
 		//BLUE
 		if (blueGoingup === true) {
 			newGreen = blue + 9;
+			// console.log("going up", newRed)
 			if (blue >= 255) {
 				blueGoingup = false
 			}
 		} else {
 			newBlue = blue - 9;
+			// console.log("going down", newRed)
 			if (blue <= 0) {
 				blueGoingup = true;
 			}
@@ -207,15 +209,12 @@ var stoneInteraction = function () {
 		if (count > 0 && count <= 10) {
 			colorChange();
 		}else if (count > 20 && count <= 40) {
-			//increase until full bleed
-			//++ h&w
-					currentSize = parseInt(myDiv.offsetWidth);
+			//INCREASE SIZE until full bleed
+					var currentSize = myDiv.offsetWidth;
+					currentSize = parseInt(currentSize);
 					console.log("current size:", currentSize);
-
-					var newSize = currentSize + .5;
-					
+					var newSize = currentSize - .5;
 					console.log("NEW size:", newSize)
-
 					// save or overwrite item: 
 					localStorage.setItem('size', newSize);
 
@@ -223,58 +222,36 @@ var stoneInteraction = function () {
 					myDiv.style.height = `${newSize}px`;
 					myDiv.style.width = `${newSize}px`;
 		} else if (count >= 40 && count < 80){
-			colorChange();
+			//ROUND UNTIL CIRCULAR
+			var newBorderRadius = (count / 100) * 5 + "%";
+			console.log("border radius:", myDiv.style.borderRadius);
+			localStorage.setItem('borderRadius', newBorderRadius);
+			myDiv.style.borderRadius = newBorderRadius;
+
 		} else if (count >= 800 && count < 1500) {
-			//decrease back to dot
-			// -- h&w
-			currentSize = parseInt(myDiv.offsetWidth);
-			console.log("current size:", currentSize);
-
-			var newSize = currentSize + .5;
-						
-			console.log("NEW size:", newSize)
-
-			// save or overwrite item: 
-			localStorage.setItem('size', newSize);
-
-			// update site:
-			myDiv.style.height = `${newSize}px`;
-			myDiv.style.width = `${newSize}px`;
+			//lengthen and flatten until line 
+			localStorage.setItem('borderRadius', 50 + "%");
+			var newWidth = myDiv.offsetWidth + (count/50) + "px";
+			var newHeight = myDiv.offsetHeight - (count/150) + "px";
+			myDiv.style.width = `${newWidth}`;
+			myDiv.style.height = `${newHeight}`;
+			console.log(newHeight);
+			localStorage.setItem(`height`, newHeight);
+			localStorage.setItem('width', newWidth);
 		} else if (count >= 1500 && count < 4000) {
-			//lengthen and flatten until horizontal line 
-			// -- h ++w
-			localStorage.setItem('borderRadius', 50 + "%");
-			var newWidth = myDiv.offsetWidth + (count/50) + "px";
-			var newHeight = myDiv.offsetHeight - (count/150) + "px";
-			myDiv.style.width = `${newWidth}`;
-			myDiv.style.height = `${newHeight}`;
-			console.log(newHeight);
-			localStorage.setItem(`height`, newHeight);
-			localStorage.setItem('width', newWidth);
-		} else if (count >= 4000 && count < 5000){
-			//shorten back until dot
-			// --w
-			localStorage.setItem('borderRadius', 50 + "%");
-			var newWidth = myDiv.offsetWidth + (count/50) + "px";
-			var newHeight = myDiv.offsetHeight - (count/150) + "px";
-			myDiv.style.width = `${newWidth}`;
-			myDiv.style.height = `${newHeight}`;
-			console.log(newHeight);
-			localStorage.setItem(`height`, newHeight);
-			localStorage.setItem('width', newWidth);
-		} else if (count) {
-			//lengthen to vertical line
-			// ++h
-		}else if (count){
-			colorChange();
-		}else if(count){
-			//widen until full bleed
-			// ++ w
-		}else if (count){
-			//flatten until horizontal line
-			// -- h
-		}else if(count){
-			//shorten back to dot
-			// --w 
-		}
+			//line sinks
+			var background = document.getElementById("background");
+			background.style.backgroundColor=red;
+			localStorage.setItem(`height`, 10 +"px");
+			localStorage.setItem(`width`, 10 +"px");
+			var newTopPosition = myDiv.offsetTop + 10 + "px";
+			console.log("top",myDiv.offsetTop);
+			myDiv.style.top = newTopPosition;
+			localStorage.setItem('topPositon', newTopPosition);
+		} else if (count >= 4000 && count < 5000)
+			//line refils with a background interaction??
+			localStorage.setItem("width", 100 +"vw");
+			var newHeightLarge =myDiv.offsetHeight + 10 + "px";
+			myDiv.style.height= newHeightLarge;
+		})
 	}

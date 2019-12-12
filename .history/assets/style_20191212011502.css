@@ -5,8 +5,8 @@
 
 #root{
 	background-color: magenta;
-	width: 30vw;
-	height: 30vw;
+	width: 100vw;
+	height: 100vh;
 	border-radius: 50%;
 	position: absolute;
 	top: 50%;

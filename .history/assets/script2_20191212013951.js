@@ -267,14 +267,7 @@ var stoneInteraction = function () {
 			// ++h
 		}else if (count){
 			colorChange();
-		}else if(count){
-			//widen until full bleed
-			// ++ w
-		}else if (count){
-			//flatten until horizontal line
-			// -- h
-		}else if(count){
-			//shorten back to dot
-			// --w 
+		}else if)(count){
+			
 		}
 	}

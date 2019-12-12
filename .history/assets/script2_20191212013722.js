@@ -251,9 +251,8 @@ var stoneInteraction = function () {
 			console.log(newHeight);
 			localStorage.setItem(`height`, newHeight);
 			localStorage.setItem('width', newWidth);
-		} else if (count >= 4000 && count < 5000){
-			//shorten back until dot
-			// --w
+		} else if (count >= 4000 && count < 5000)
+			//shorten back until dot, 
 			localStorage.setItem('borderRadius', 50 + "%");
 			var newWidth = myDiv.offsetWidth + (count/50) + "px";
 			var newHeight = myDiv.offsetHeight - (count/150) + "px";
@@ -262,19 +261,5 @@ var stoneInteraction = function () {
 			console.log(newHeight);
 			localStorage.setItem(`height`, newHeight);
 			localStorage.setItem('width', newWidth);
-		} else if (count) {
-			//lengthen to vertical line
-			// ++h
-		}else if (count){
-			colorChange();
-		}else if(count){
-			//widen until full bleed
-			// ++ w
-		}else if (count){
-			//flatten until horizontal line
-			// -- h
-		}else if(count){
-			//shorten back to dot
-			// --w 
-		}
+		})
 	}

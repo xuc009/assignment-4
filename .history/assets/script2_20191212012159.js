@@ -207,8 +207,7 @@ var stoneInteraction = function () {
 		if (count > 0 && count <= 10) {
 			colorChange();
 		}else if (count > 20 && count <= 40) {
-			//increase until full bleed
-			//++ h&w
+			//INCREASE SIZE until full bleed
 					currentSize = parseInt(myDiv.offsetWidth);
 					console.log("current size:", currentSize);
 
@@ -225,24 +224,9 @@ var stoneInteraction = function () {
 		} else if (count >= 40 && count < 80){
 			colorChange();
 		} else if (count >= 800 && count < 1500) {
-			//decrease back to dot
-			// -- h&w
-			currentSize = parseInt(myDiv.offsetWidth);
-			console.log("current size:", currentSize);
-
-			var newSize = currentSize + .5;
-						
-			console.log("NEW size:", newSize)
-
-			// save or overwrite item: 
-			localStorage.setItem('size', newSize);
-
-			// update site:
-			myDiv.style.height = `${newSize}px`;
-			myDiv.style.width = `${newSize}px`;
+			
 		} else if (count >= 1500 && count < 4000) {
-			//lengthen and flatten until horizontal line 
-			// -- h ++w
+			//lengthen and flatten until line 
 			localStorage.setItem('borderRadius', 50 + "%");
 			var newWidth = myDiv.offsetWidth + (count/50) + "px";
 			var newHeight = myDiv.offsetHeight - (count/150) + "px";
@@ -251,30 +235,10 @@ var stoneInteraction = function () {
 			console.log(newHeight);
 			localStorage.setItem(`height`, newHeight);
 			localStorage.setItem('width', newWidth);
-		} else if (count >= 4000 && count < 5000){
-			//shorten back until dot
-			// --w
-			localStorage.setItem('borderRadius', 50 + "%");
-			var newWidth = myDiv.offsetWidth + (count/50) + "px";
-			var newHeight = myDiv.offsetHeight - (count/150) + "px";
-			myDiv.style.width = `${newWidth}`;
-			myDiv.style.height = `${newHeight}`;
-			console.log(newHeight);
-			localStorage.setItem(`height`, newHeight);
-			localStorage.setItem('width', newWidth);
-		} else if (count) {
-			//lengthen to vertical line
-			// ++h
-		}else if (count){
-			colorChange();
-		}else if(count){
-			//widen until full bleed
-			// ++ w
-		}else if (count){
-			//flatten until horizontal line
-			// -- h
-		}else if(count){
-			//shorten back to dot
-			// --w 
-		}
+		} else if (count >= 4000 && count < 5000)
+			//line refils with a background interaction??
+			localStorage.setItem("width", 100 +"vw");
+			var newHeightLarge =myDiv.offsetHeight + 10 + "px";
+			myDiv.style.height= newHeightLarge;
+		})
 	}
