@@ -42,7 +42,7 @@ var checkForItems = function () {
 	}
 
 	if (localStorage.getItem("height")){
-		var height = parseInt(localStorage.getItem("height"));
+		var width = parseInt(localStorage.getItem("height"));
 		console.log("yes height");
 		// update the css of the stone for wherever it was left off
 		document.getElementById("root").style.height = `${height}px`;
@@ -50,7 +50,41 @@ var checkForItems = function () {
 }
 
 
-// localStorage.clear();
+
+// var saveUserInfo = function(){
+
+
+// 	})
+
+// 	TimeMe.initialize({
+// 		currentPageName: "my-home-page", // current page
+// 		idleTimeoutInSeconds: 30 // seconds
+// 		});
+
+// 		// ... Some time later ...
+
+// 		// Retrieve time spent on current page
+// 		var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
+// 		console.log("time:", timeSpentOnPage);
+
+// 		TimeMe.callAfterTimeElapsedInSeconds(15, function(){
+// 			console.log("The user has been actively using the page for 15 seconds! Let's prompt them with something.");
+
+// 			newRed=255;
+// 			newBlue=0;
+// 			newGreen=0;
+
+// 			var newColor = `rgb(${newRed}, ${newGreen}, ${newBlue})`
+// 			localStorage.setItem('background', newColor); 
+// 			document.getElementById("root").style.backgroundColor= newColor; 
+// 		});
+
+// }
+
+
+// once content has been loaded
+
+localStorage.clear();
 
 window.addEventListener('DOMContentLoaded', function () {
 	checkForItems();

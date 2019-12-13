@@ -34,6 +34,12 @@ var checkForItems = function () {
 		document.getElementById("root").style.width = `${size}px`;
 	}
 
+	if (localStorage.getItem("borderRadius")) {
+		var borderRadius = parseInt(localStorage.getItem("borderRadius"));
+		// update the css of the stone for wherever it was left off
+		document.getElementById("root").style.borderRadius = `${borderRadius}%`;
+	}
+
 	if (localStorage.getItem("width")){
 		var width = parseInt(localStorage.getItem("width"));
 		console.log("yes width");
@@ -42,15 +48,49 @@ var checkForItems = function () {
 	}
 
 	if (localStorage.getItem("height")){
-		var height = parseInt(localStorage.getItem("height"));
+		var width = parseInt(localStorage.getItem("height"));
 		console.log("yes height");
 		// update the css of the stone for wherever it was left off
-		document.getElementById("root").style.height = `${height}px`;
+		document.getElementById("root").style.height = `${width}px`;
 	}
 }
 
 
-// localStorage.clear();
+
+// var saveUserInfo = function(){
+
+
+// 	})
+
+// 	TimeMe.initialize({
+// 		currentPageName: "my-home-page", // current page
+// 		idleTimeoutInSeconds: 30 // seconds
+// 		});
+
+// 		// ... Some time later ...
+
+// 		// Retrieve time spent on current page
+// 		var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
+// 		console.log("time:", timeSpentOnPage);
+
+// 		TimeMe.callAfterTimeElapsedInSeconds(15, function(){
+// 			console.log("The user has been actively using the page for 15 seconds! Let's prompt them with something.");
+
+// 			newRed=255;
+// 			newBlue=0;
+// 			newGreen=0;
+
+// 			var newColor = `rgb(${newRed}, ${newGreen}, ${newBlue})`
+// 			localStorage.setItem('background', newColor); 
+// 			document.getElementById("root").style.backgroundColor= newColor; 
+// 		});
+
+// }
+
+
+// once content has been loaded
+
+localStorage.clear();
 
 window.addEventListener('DOMContentLoaded', function () {
 	checkForItems();
@@ -70,16 +110,14 @@ var red, blue, green, borderRadius;
 var count = 0;
 count = parseInt(count);
 
-
-var goingup = true;
-var greenGoingup = true;
-var blueGoingup = true;
-
 var colorChange = function (){
 	
 	var myDiv = document.getElementById("root");
+	var goingup = true;
+	var greenGoingup = true;
+	var blueGoingup = true;
 
-	// myDiv.addEventListener('mousemove', function () {
+	myDiv.addEventListener('mousemove', function () {
 		var currentColor = myDiv.style.backgroundColor;
 		// console.log(myDiv.style.backgroundColor);
 
@@ -87,7 +125,7 @@ var colorChange = function (){
 			.replace(/ /g, '')
 			.split(',');
 
-		console.log("current color:", currentColor);
+		// console.log("current color:", currentColor);
 
 		var red = currentColor[0];
 		red = parseInt(red);
@@ -95,14 +133,19 @@ var colorChange = function (){
 		green = parseInt(green);
 		var blue = currentColor[2];
 		blue = parseInt(blue);
+
+
+		//var newRed = red + 1;
+		var newGreen = green - 2;
+		var newBlue = blue + 1;
+
 		
-	
 
 		//RED
 		if (goingup === true) {
 			newRed = red + 2;
 			// console.log("going up", newRed)
-			console.log (goingup)
+			// console.log (goingup)
 			if (red >= 255) {
 				goingup = false
 			}
@@ -126,7 +169,7 @@ var colorChange = function (){
 		}
 		//BLUE
 		if (blueGoingup === true) {
-			newBlue = blue + 9;
+			newGreen = blue + 9;
 			if (blue >= 255) {
 				blueGoingup = false
 			}
@@ -147,20 +190,18 @@ var colorChange = function (){
 		// update site:
 		myDiv.style.backgroundColor = newColor;
 
-	// })
+	})
 
 }
 
 var decreaseWidth = function (){
-	var myDiv = document.getElementById("root");
-	var newWidth = myDiv.offsetWidth - (count/80) + "px";
+	var newWidth = myDiv.offsetWidth - (count/50) + "px";
 	myDiv.style.width = `${newWidth}`;
 	console.log("new --w:",newWidth);
 	localStorage.setItem('width', newWidth);
 }
 
 var increaseWidth = function(){
-	var myDiv = document.getElementById("root");
 	var newWidth = myDiv.offsetWidth + (count/50) + "px";
 	myDiv.style.width = `${newWidth}`;
 	console.log("new ++w:",newWidth);
@@ -168,93 +209,98 @@ var increaseWidth = function(){
 }
 
 var decreaseHeight = function(){
-	var myDiv = document.getElementById("root");
-	var newHeight = myDiv.offsetHeight - (count/80) + "px";
+	var newHeight = myDiv.offsetHeight - (count/50) + "px";
 	myDiv.style.height = `${newHeight}`;
 	console.log("new --h:",newHeight);
 	localStorage.setItem('height', newHeight);
 }
 
 var increaseHeight = function(){
-	var myDiv = document.getElementById("root");
 	var newHeight = myDiv.offsetHeight + (count/50) + "px";
 	myDiv.style.height = `${newHeight}`;
 	console.log("new ++h:",newHeight);
 	localStorage.setItem('height', newHeight);
 }
 
-var decreaseDot = function(){
-	var myDiv = document.getElementById("root");
-	var newWidth = myDiv.offsetWidth - (count/50) + "px";
-	myDiv.style.width = `${newWidth}`;
-	myDiv.style.height = `${newWidth}`
-	console.log("new --dot:",newWidth);
-	localStorage.setItem('width', newWidth);
-	localStorage.setItem('height', newWidth);
-}
-
-var increaseDot = function(){
-	var myDiv = document.getElementById("root");
-	var newWidth = myDiv.offsetWidth + (count/50) + "px";
-	myDiv.style.width = `${newWidth}`;
-	myDiv.style.height = `${newWidth}`
-	console.log("new ++dot:",newWidth);
-	localStorage.setItem('width', newWidth);
-	localStorage.setItem('height', newWidth);
-}
-
 var stoneInteraction = function () {
 
 	var myDiv = document.getElementById("root");
 
-	myDiv.addEventListener("mouseover", function () {
+	myDiv.addEventListener("mouseenter", function () {
 
 		count++;
 		localStorage.setItem('count', count);
 		console.log("count:", count);
 
-		if (count > 0 && count <= 150) {
+		if (count > 0 && count <= 10) {
 			colorChange();
-			// increaseHeight();
-		}else if (count > 150 && count <= 450) {
-			
-			increaseDot();
-				
-		} else if (count >= 450 && count < 490){
+		}else if (count > 20 && count <= 40) {
+			//increase until full bleed
+			//++ h&w
+					currentSize = parseInt(myDiv.offsetWidth);
+					console.log("current size:", currentSize);
+
+					var newSize = currentSize + .5;
+					
+					console.log("NEW size:", newSize)
+
+					// save or overwrite item: 
+					localStorage.setItem('size', newSize);
+
+					// update site:
+					myDiv.style.height = `${newSize}px`;
+					myDiv.style.width = `${newSize}px`;
+		} else if (count >= 40 && count < 80){
 			colorChange();
-		} else if (count >= 490 && count < 650) {
+		} else if (count >= 800 && count < 1500) {
 			//decrease back to dot
 			// -- h&w
-			decreaseDot();
-		} else if (count >= 650 && count < 690) {
+			currentSize = parseInt(myDiv.offsetWidth);
+			console.log("current size:", currentSize);
+
+			var newSize = currentSize + .5;
+						
+			console.log("NEW size:", newSize)
+
+			// save or overwrite item: 
+			localStorage.setItem('size', newSize);
+
+			// update site:
+			myDiv.style.height = `${newSize}px`;
+			myDiv.style.width = `${newSize}px`;
+		} else if (count >= 1500 && count < 4000) {
 			//lengthen and flatten until horizontal line 
 			// -- h ++w
-			decreaseHeight();
-			increaseWidth();
-		} else if (count >= 690 && count < 780){
+			var newWidth = myDiv.offsetWidth + (count/50) + "px";
+			var newHeight = myDiv.offsetHeight - (count/150) + "px";
+			myDiv.style.width = `${newWidth}`;
+			myDiv.style.height = `${newHeight}`;
+			console.log(newHeight);
+			localStorage.setItem(`height`, newHeight);
+			localStorage.setItem('width', newWidth);
+		} else if (count >= 4000 && count < 5000){
 			//shorten back until dot
 			// --w
-			decreaseWidth();
-		} else if (count >= 780 && count < 870 ) {
+			var newWidth = myDiv.offsetWidth + (count/50) + "px";
+			var newHeight = myDiv.offsetHeight - (count/150) + "px";
+			myDiv.style.width = `${newWidth}`;
+			myDiv.style.height = `${newHeight}`;
+			console.log(newHeight);
+			localStorage.setItem(`height`, newHeight);
+			localStorage.setItem('width', newWidth);
+		} else if (count) {
 			//lengthen to vertical line
 			// ++h
-			increaseHeight();
-		}else if (count >= 870 && count < 950){
+		}else if (count){
 			colorChange();
-		}else if(count >= 950 && count < 1000){
+		}else if(count){
 			//widen until full bleed
 			// ++ w
-			increaseWidth();
-		}else if (count >= 1000 && count < 1100){
-			colorChange();
-		}else if (count >= 1100 && count < 1200){
+		}else if (count){
 			//flatten until horizontal line
 			// -- h
-			decreaseHeight();
-		}else if(count >= 1200 && count < 1300){
+		}else if(count){
 			//shorten back to dot
 			// --w 
-			decreaseWidth();
 		}
-	})
-}
+	}

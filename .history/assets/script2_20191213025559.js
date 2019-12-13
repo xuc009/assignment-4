@@ -42,7 +42,7 @@ var checkForItems = function () {
 	}
 
 	if (localStorage.getItem("height")){
-		var height = parseInt(localStorage.getItem("height"));
+		var width = parseInt(localStorage.getItem("height"));
 		console.log("yes height");
 		// update the css of the stone for wherever it was left off
 		document.getElementById("root").style.height = `${height}px`;

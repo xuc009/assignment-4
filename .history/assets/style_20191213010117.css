@@ -4,7 +4,7 @@
 }
 
 #root{
-	background-color: black;
+	background-color: magenta;
 	width: 30vw;
 	height: 30vw;
 	border-radius: 50%;
@@ -35,14 +35,9 @@
 }
 
 img{
-	height: 100vh;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	z-index: -1;
+	height: 80vh;
+	transform: rotate(90deg);
 	}
 
 #description{
-	text-align: center;
 }

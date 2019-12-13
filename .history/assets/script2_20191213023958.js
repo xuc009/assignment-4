@@ -42,7 +42,7 @@ var checkForItems = function () {
 	}
 
 	if (localStorage.getItem("height")){
-		var height = parseInt(localStorage.getItem("height"));
+		var width = parseInt(localStorage.getItem("height"));
 		console.log("yes height");
 		// update the css of the stone for wherever it was left off
 		document.getElementById("root").style.height = `${height}px`;
@@ -50,7 +50,41 @@ var checkForItems = function () {
 }
 
 
-// localStorage.clear();
+
+// var saveUserInfo = function(){
+
+
+// 	})
+
+// 	TimeMe.initialize({
+// 		currentPageName: "my-home-page", // current page
+// 		idleTimeoutInSeconds: 30 // seconds
+// 		});
+
+// 		// ... Some time later ...
+
+// 		// Retrieve time spent on current page
+// 		var timeSpentOnPage = TimeMe.getTimeOnCurrentPageInSeconds();
+// 		console.log("time:", timeSpentOnPage);
+
+// 		TimeMe.callAfterTimeElapsedInSeconds(15, function(){
+// 			console.log("The user has been actively using the page for 15 seconds! Let's prompt them with something.");
+
+// 			newRed=255;
+// 			newBlue=0;
+// 			newGreen=0;
+
+// 			var newColor = `rgb(${newRed}, ${newGreen}, ${newBlue})`
+// 			localStorage.setItem('background', newColor); 
+// 			document.getElementById("root").style.backgroundColor= newColor; 
+// 		});
+
+// }
+
+
+// once content has been loaded
+
+localStorage.clear();
 
 window.addEventListener('DOMContentLoaded', function () {
 	checkForItems();
@@ -231,27 +265,27 @@ var stoneInteraction = function () {
 			// -- h ++w
 			decreaseHeight();
 			increaseWidth();
-		} else if (count >= 690 && count < 780){
+		} else if (count >= 690 && count < 790){
 			//shorten back until dot
 			// --w
 			decreaseWidth();
-		} else if (count >= 780 && count < 870 ) {
+		} else if (count >= 790 && count < 890) {
 			//lengthen to vertical line
 			// ++h
 			increaseHeight();
-		}else if (count >= 870 && count < 950){
+		}else if (count >= 890 && count < 950){
 			colorChange();
-		}else if(count >= 950 && count < 1000){
+		}else if(count >= 950 && count < 1250){
 			//widen until full bleed
 			// ++ w
 			increaseWidth();
-		}else if (count >= 1000 && count < 1100){
+		}else if (count >= 1250 && count < 1300){
 			colorChange();
-		}else if (count >= 1100 && count < 1200){
+		}else if (count >= 1300 && count < 1400){
 			//flatten until horizontal line
 			// -- h
 			decreaseHeight();
-		}else if(count >= 1200 && count < 1300){
+		}else if(count >= 1400 && count < 1500){
 			//shorten back to dot
 			// --w 
 			decreaseWidth();
